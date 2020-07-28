@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import AppRouter from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
 import { addExpense } from "./action/expenses";
-// import { setTextFilter } from "./action/filters";
 import getVisibleExpenses from "./selectors/expenses";
 
 const store = configureStore();

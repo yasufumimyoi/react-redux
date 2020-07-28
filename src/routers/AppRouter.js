@@ -9,9 +9,11 @@ import Header from "../components/Header";
 
 //全てのコンポーネントを集めている
 //集めたコンポーネントをindex.jsに持っていってrender
-//親 Dashboard　子 ExpenseList 子の子 ExpenseListItem
-//　　　　　　　　子 ExpenseListFilter
-//親 AddExpense 子 ExpenseForm
+// コンポーネントのstructure
+//・Dashboard--ExpenseListFilter
+//     　　　--ExpenseList--ExpenseListItem
+//・AddExpense--ExpenseForm
+//・EditExpense--ExpenseForm
 
 const AppRouter = () => (
   <BrowserRouter>

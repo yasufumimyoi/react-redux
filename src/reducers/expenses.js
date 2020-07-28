@@ -19,6 +19,7 @@ const expensesReducers = (state = expensesReducerDefaultState, action) => {
       //編集したいオブジェクトを特定する為にIDを渡す
       //expenseオブジェクトの全てのキーと値を回す
       //最後にupdatesで渡した値で上書して編集する
+      //returnの値に気を付ける
       return state.map((expense) => {
         if (expense.id === action.id) {
           return {
@@ -26,7 +27,7 @@ const expensesReducers = (state = expensesReducerDefaultState, action) => {
             ...action.updates,
           };
         } else {
-          return state;
+          return expense;
         }
       });
 
