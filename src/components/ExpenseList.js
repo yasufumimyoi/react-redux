@@ -5,23 +5,26 @@ import getVisibleExpenses from "../selectors/expenses";
 
 //このpropsはstoreから来ている
 //配列の中にオブジェクト型のexpensesのstateが渡されている
-const ExpenseList = (props) => {
+export const ExpenseList = (props) => {
   return (
     <div>
-      <h2>ExpenseList</h2>
-      {props.expenses.map((expense) => {
-        return (
-          <ExpenseListItem
-            key={expense.id}
-            {...expense}
-            // spreadを使えば以下のような書き方をしなくても済む
-            // description={expense.description}
-            // amount={expense.amount}
-            // createdAt={expense.createdAt}
-            // key={index.toString}
-          />
-        );
-      })}
+      {props.expenses.length === 0 ? (
+        <p>No expenses</p>
+      ) : (
+        props.expenses.map((expense) => {
+          return (
+            <ExpenseListItem
+              key={expense.id}
+              {...expense}
+              // spreadを使えば以下のような書き方をしなくても済む
+              // description={expense.description}
+              // amount={expense.amount}
+              // createdAt={expense.createdAt}
+              // key={index.toString}
+            />
+          );
+        })
+      )}
     </div>
   );
 };
