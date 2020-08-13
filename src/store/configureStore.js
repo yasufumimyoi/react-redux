@@ -1,8 +1,11 @@
 //きちんと最後までimport先ファイルを確認する！！
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import expensesReducers from "../reducers/expenses";
 import filterReducer from "../reducers/filters";
+import thunk from "redux-thunk";
 
+const composeEnhancers =
+  typeof window !== "undefined" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 //stateを分けて持つ
 //初期値が沢山あってもシンプルに分ける事が出来る
 //名前を持たないexportだとimport先で自由に名前を決める事が可能
@@ -13,8 +16,9 @@ export default () => {
       expenses: expensesReducers,
       filter: filterReducer,
     }),
-    //redux-dev-tool-extension
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    composeEnhancers(applyMiddleware(thunk))
+    // //redux-dev-tool-extension
+    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
   return store;
 };
